@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -14,8 +15,21 @@ class _searchPageState extends State<searchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Search'),
+        title: Container(
+          height: 40.0,
+          width: double.infinity,
+          child: TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                labelText: 'Search'
+            ),
+          ),
+        ),
       ),
       body: Container(
         margin: EdgeInsets.all(12.0),
