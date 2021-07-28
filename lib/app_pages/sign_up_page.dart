@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'home_page.dart';
+
 
 class sign_up extends StatefulWidget {
   const sign_up({Key? key}) : super(key: key);
@@ -8,6 +11,8 @@ class sign_up extends StatefulWidget {
 }
 
 class _sign_upState extends State<sign_up> {
+  late String _email, _password;
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -15,6 +20,7 @@ class _sign_upState extends State<sign_up> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+          backgroundColor: Colors.white,
           leading: IconButton(
             onPressed: (){
               Navigator.of(context).pop();
@@ -33,7 +39,12 @@ class _sign_upState extends State<sign_up> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                 child: TextField(
-                  obscureText: true,
+                  onChanged: (value){
+                    setState(() {
+                      _email = value;
+                    });
+                  },
+                  obscureText: false,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
@@ -45,6 +56,11 @@ class _sign_upState extends State<sign_up> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                 child: TextField(
+                  onChanged: (value){
+                    setState(() {
+                      _password = value;
+                    });
+                  },
                   obscureText: true,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -80,12 +96,17 @@ class _sign_upState extends State<sign_up> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                child: ElevatedButton(onPressed: (){},
+                child: ElevatedButton(onPressed: (){
+                  auth.createUserWithEmailAndPassword(email: _email, password: _password);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                  return firstPage();
+                  }));
+                },
                     child: Text('Sign up'),
                   style: ElevatedButton.styleFrom(minimumSize: Size(400, 45)),
                 ),
               ),
-              Container(height: 50.0,),
+              SizedBox(height: 40.0,),
               Center(child: Text('OR')),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -97,6 +118,7 @@ class _sign_upState extends State<sign_up> {
                   ),
                 ],
               ),
+              SizedBox(height: 40.0,),
               Container(
                 height: 40.0,
                 child: Center(child: Text('Instagram of Facebook')),

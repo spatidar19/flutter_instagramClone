@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/app_pages/camera.dart';
 import 'package:instagram_clone/app_pages/dm.dart';
 
 
@@ -16,6 +17,7 @@ class _homePageState extends State<homePage> {
   List<String> names = ['Tony','Loki','Steve','Dhoni','Thor','Peter','Amay','Hement'];
   List<String> locations = ['Pune','Mumbai','Chennai','NYC','Burhanpur','Paris','Nasik','Thane'];
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +28,14 @@ class _homePageState extends State<homePage> {
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
             titleSpacing: 3,
-            leading: Icon(Icons.camera_alt_outlined, size: 30.0, color: Colors.grey[700],),
+            leading: IconButton(icon: Icon(Icons.camera_alt_outlined, size: 30.0,), color: Colors.grey[700],
+            onPressed: (){
+              setState(() {
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return CameraPhoto();
+                }));
+              });
+            },),
             title: Center(child: Image(image: AssetImage('assets/insta_home.png'), height: 40.0,)),
             actions: [
               IconButton(onPressed: (){}, icon: Icon(Icons.live_tv_outlined, size: 30.0,),),

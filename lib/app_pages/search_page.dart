@@ -17,14 +17,17 @@ class _searchPageState extends State<searchPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        titleSpacing: 2.5,
+        backgroundColor: Colors.white,
         title: Container(
           height: 40.0,
           width: double.infinity,
           child: TextField(
             obscureText: true,
             decoration: InputDecoration(
+              prefixIcon: Icon(Icons.search_outlined),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+                  borderRadius: BorderRadius.circular(7.0),
                 ),
                 labelText: 'Search'
             ),

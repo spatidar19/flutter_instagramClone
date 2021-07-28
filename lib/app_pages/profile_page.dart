@@ -21,8 +21,8 @@ class _profilePageState extends State<profilePage> {
           return [
             SliverAppBar(
               backgroundColor: Colors.white,
-              collapsedHeight: 180.0,
-              expandedHeight: 150.0,
+              collapsedHeight: 200.0,
+              expandedHeight: 130.0,
               flexibleSpace: profileView(),
             ),
           ];

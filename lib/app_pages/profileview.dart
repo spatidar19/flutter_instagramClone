@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/app_pages/signout.dart';
 
 class profileView extends StatelessWidget {
 
@@ -8,6 +9,7 @@ class profileView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 10.0,),
         Container(
           margin: EdgeInsets.symmetric(vertical: 16.0),
           child: Row(
@@ -104,8 +106,12 @@ class profileView extends StatelessWidget {
           width: double.infinity,
           child: SizedBox(
             child: ElevatedButton(
-              onPressed: (){},
-              child: Text('Edit Profile', style: TextStyle(color: Colors.black38),),
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return SignOut();
+                }));
+              },
+              child: Text('Edit Profile', style: TextStyle(color: Colors.black),),
             ),
           ),
         ),

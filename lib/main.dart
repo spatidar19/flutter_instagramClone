@@ -1,31 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-// import 'package:instagram_clone/app_pages/welcom_page.dart';
-//import 'package:instagram_clone/app_pages/sign_up_page.dart';
-// import 'package:instagram_clone/app_pages/login_page.dart';
-import 'package:instagram_clone/app_pages/home_screen.dart';
-import 'package:instagram_clone/app_pages/search_page.dart';
-import 'package:instagram_clone/app_pages/welcom_page.dart';
-import 'package:instagram_clone/app_pages/home_page.dart';
-import 'package:instagram_clone/app_pages/profile_page.dart';
-import 'package:instagram_clone/app_pages/dm.dart';
-void main() {
-  runApp(MaterialApp(
-    theme: ThemeData(primaryColor: Colors.white),
-    home: Home(),
-  ));
+import 'package:instagram_clone/app_pages/app.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+
+
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  // SharedPreferences prefs = await SharedPreferences.getInstance();
+  // var email = prefs.getString('email');
+  runApp(App());
 }
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
-    return welcome_page();
-  }
-}
 
